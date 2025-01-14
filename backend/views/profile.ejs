@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
+<body>
+    <% if (user) { %>
+        <h1>Hello <%= user.name %>!</h1>
+        <div>Profile Picture: <%= user.profilePic %></div>
+        <h1>Email: <%= user.email %></h1>
+        <h2>Message: <%= user.message %></h2>
+    <% } else { %>
+        <h1>Welcome, Guest!</h1>
+        <!-- You can add additional content for guest users
+    <% } %>
+</body>
+</html>
