@@ -20,7 +20,7 @@ function Edit() {
       try {
         if (blogId) {
           const response = await axios.get(
-            `${import.meta.env.VITE_APP_URL}/edit/${blogId}` || `http://localhost:3000/edit/${blogId}`
+            `${import.meta.env.VITE_APP_URL}/edit/${blogId}`
           );
           const data = response.data;
           setUserData(data);

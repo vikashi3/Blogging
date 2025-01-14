@@ -26,7 +26,7 @@ function Signup() {
       formData.append("contact", input.contact);
 
       const response = await axios.post(
-        "${import.meta.env.VITE_APP_URL}/signup",
+        `${import.meta.env.VITE_APP_URL}/signup`,
         formData,
         {
           headers: {
