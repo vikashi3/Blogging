@@ -14,10 +14,7 @@ const app = express();
 
 app.set("view engine", "ejs");
 
-// const allowedOrigins = ["https://blog-with-cards.vercel.app"];
-const allowedOrigins = ["http://localhost:5174"];
-
-app.use(cors(allowedOrigins));
+app.use(cors(process.env.FRONTEND_URL));
 
 app.use(cookieParser());
 app.use(express.json());

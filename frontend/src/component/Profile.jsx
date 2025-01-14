@@ -30,7 +30,7 @@ function Profile() {
           Authorization: `${token}`,
         };
         const response = await axios.get(
-          `${import.meta.env.VITE_APP_URL}/profile/${userId}` ||
+          `${import.meta.env.VITE_APP_URL}/profile/${userId}`,
           { headers }
         );
         const userData = response.data;
