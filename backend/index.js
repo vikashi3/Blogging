@@ -122,16 +122,16 @@ app.get("/signup", (req, res) => {
 });
 
 app.post("/signup", upload.single("file"), async (req, res) => {
+  const { name, email, password, contact } = req.body;
+
+  if (!req.file) {
+    return res.status(400).send("No file uploaded.");
+  }
+
   try {
-    if (!req.file) {
-      return res.status(400).json({ message: "No file uploaded" });
-    }
-
-    const { name, email, password, contact } = req.body;
-
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return res.status(409).json({ message: "User already registered" });
+      return res.status(409).send("User already registered");
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -145,10 +145,11 @@ app.post("/signup", upload.single("file"), async (req, res) => {
     });
 
     const token = await createToken(res, email, newUser._id);
-    res.status(201).json({ token });
+
+    res.status(201).send(token);
   } catch (error) {
-    console.error("Signup error:", error);
-    res.status(500).json({ message: "Internal server error" });
+    console.error(error);
+    res.status(500).send("Error signing up user");
   }
 });
 
